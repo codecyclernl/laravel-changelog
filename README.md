@@ -61,6 +61,8 @@ php artisan vendor:publish --tag="laravel-changelog-views"
 ```
 
 ## Usage
+
+### Filament page
 You can view the changelog on the `/admin/changelog` page.
 
 ### Frontend
@@ -68,7 +70,7 @@ You can view the changelog on the `/admin/changelog` page.
 <livewire:latest-version-frontend />
 ```
 
-### Dashboard widget
+### Filament dashboard widget
 You can register the `Codecycler\Changelog\Filament\Widgets\LatestVersion` widget to show the latest version on your dashboard.
 
 ## Testing
