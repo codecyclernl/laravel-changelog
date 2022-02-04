@@ -2,13 +2,13 @@
 
 namespace Codecycler\Changelog;
 
-use Codecycler\Changelog\Http\Livewire\ChangelogFrontend;
-use Livewire\Livewire;
-use Filament\PluginServiceProvider;
-use Spatie\LaravelPackageTools\Package;
 use Codecycler\Changelog\Contracts\ReleaseAdapter;
 use Codecycler\Changelog\Filament\Pages\ChangelogPage;
 use Codecycler\Changelog\Filament\Widgets\LatestVersion;
+use Codecycler\Changelog\Http\Livewire\ChangelogFrontend;
+use Filament\PluginServiceProvider;
+use Livewire\Livewire;
+use Spatie\LaravelPackageTools\Package;
 
 class ChangelogServiceProvider extends PluginServiceProvider
 {
@@ -18,7 +18,8 @@ class ChangelogServiceProvider extends PluginServiceProvider
     {
         $this->app->bind(ReleaseAdapter::class, function () {
             $adapter = config('changelog.releaseAdapter');
-            return new $adapter;
+
+            return new $adapter();
         });
     }
 

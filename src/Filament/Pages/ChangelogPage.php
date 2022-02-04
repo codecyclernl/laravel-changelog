@@ -2,8 +2,8 @@
 
 namespace Codecycler\Changelog\Filament\Pages;
 
-use Filament\Pages\Page;
 use Codecycler\Changelog\Contracts\ReleaseAdapter;
+use Filament\Pages\Page;
 
 class ChangelogPage extends Page
 {

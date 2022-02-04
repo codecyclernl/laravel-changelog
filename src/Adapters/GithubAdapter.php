@@ -2,10 +2,10 @@
 
 namespace Codecycler\Changelog\Adapters;
 
-use Github\Client;
-use Github\AuthMethod;
 use Codecycler\Changelog\Concerns\Hasrepo;
 use Codecycler\Changelog\Contracts\ReleaseAdapter;
+use Github\AuthMethod;
+use Github\Client;
 
 class GithubAdapter implements ReleaseAdapter
 {
@@ -44,5 +44,4 @@ class GithubAdapter implements ReleaseAdapter
             ->releases()
             ->tag($this->author, $this->repo, $tag);
     }
-
 }
