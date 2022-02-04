@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Codecycler\Changelog\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class ChangelogCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-changelog';
 
     public $description = 'My command';
 
