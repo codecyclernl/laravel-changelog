@@ -2,9 +2,9 @@
 
 namespace Codecycler\Changelog\Tests;
 
+use Codecycler\Changelog\ChangelogServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Codecycler\Changelog\ChangelogServiceProvider;
 
 class TestCase extends Orchestra
 {
