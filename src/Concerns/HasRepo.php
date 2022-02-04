@@ -4,13 +4,13 @@ namespace Codecycler\Changelog\Concerns;
 
 trait HasRepo
 {
-    public $name;
+    public string $name;
 
-    public $author;
+    public string $author;
 
-    public $repo;
+    public string $repo;
 
-    public function setRepo($name)
+    public function setRepo($name): void
     {
         $this->name = $name;
 

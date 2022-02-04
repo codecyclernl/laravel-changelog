@@ -2,7 +2,7 @@
 
 namespace Codecycler\Changelog\Adapters;
 
-use Codecycler\Changelog\Concerns\Hasrepo;
+use Codecycler\Changelog\Concerns\HasRepo;
 use Codecycler\Changelog\Contracts\ReleaseAdapter;
 use Github\AuthMethod;
 use Github\Client;
