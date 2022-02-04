@@ -23,11 +23,11 @@ You can install the package via composer:
 composer require codecycler/laravel-changelog
 ```
 
-You can publish and run the migrations with:
+### Github
+You can connect your application to your GitHub repository by adding an env variable with a user access token.
 
-```bash
-php artisan vendor:publish --tag="laravel-changelog-migrations"
-php artisan migrate
+```dotenv
+RELEASE_GH_API_KEY=...
 ```
 
 You can publish the config file with:
@@ -40,8 +40,19 @@ This is the contents of the published config file:
 
 ```php
 return [
+    /**
+     * The adapter being used by the package to get the releases.
+     */
+    'releaseAdapter' => \Codecycler\Changelog\Adapters\GithubAdapter::class,
+
+    /**
+     * The repository which should be used for release lookup.
+     */
+    'repository' => 'learnkit-dev/rubricsmaken-site',
 ];
 ```
+
+Adjust the config to your needs.
 
 Optionally, you can publish the views using
 
@@ -50,17 +61,19 @@ php artisan vendor:publish --tag="laravel-changelog-views"
 ```
 
 ## Usage
+You can view the changelog on the `/admin/changelog` page.
 
+### Frontend
 ```php
-$changelog = new Codecycler\Changelog();
-echo $changelog->echoPhrase('Hello, Codecycler!');
+<livewire:latest-version-frontend />
 ```
+
+### Dashboard widget
+You can register the `Codecycler\Changelog\Filament\Widgets\LatestVersion` widget to show the latest version on your dashboard.
 
 ## Testing
 
-```bash
-composer test
-```
+Currently there are no tests yet.
 
 ## Changelog
 

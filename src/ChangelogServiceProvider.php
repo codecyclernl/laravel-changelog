@@ -2,24 +2,36 @@
 
 namespace Codecycler\Changelog;
 
+use Codecycler\Changelog\Http\Livewire\ChangelogFrontend;
+use Livewire\Livewire;
+use Filament\PluginServiceProvider;
 use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Codecycler\Changelog\Commands\ChangelogCommand;
+use Codecycler\Changelog\Contracts\ReleaseAdapter;
+use Codecycler\Changelog\Filament\Pages\ChangelogPage;
+use Codecycler\Changelog\Filament\Widgets\LatestVersion;
 
-class ChangelogServiceProvider extends PackageServiceProvider
+class ChangelogServiceProvider extends PluginServiceProvider
 {
-    public function configurePackage(Package $package): void
+    public static string $name = 'laravel-changelog';
+
+    public function packageConfigured(Package $package): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
-        $package
-            ->name('laravel-changelog')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-changelog_table')
-            ->hasCommand(ChangelogCommand::class);
+        $this->app->bind(ReleaseAdapter::class, function () {
+            $adapter = config('changelog.releaseAdapter');
+            return new $adapter;
+        });
+    }
+
+    public function packageBooted(): void
+    {
+        Livewire::component('releases-latest-version', LatestVersion::class);
+        Livewire::component('latest-version-frontend', ChangelogFrontend::class);
+    }
+
+    protected function getPages(): array
+    {
+        return [
+            'changelog' => ChangelogPage::class,
+        ];
     }
 }
