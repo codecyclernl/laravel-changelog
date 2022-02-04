@@ -2,9 +2,9 @@
 
 namespace Codecycler\Changelog;
 
+use Codecycler\Changelog\Commands\ChangelogCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Codecycler\Changelog\Commands\ChangelogCommand;
 
 class ChangelogServiceProvider extends PackageServiceProvider
 {
